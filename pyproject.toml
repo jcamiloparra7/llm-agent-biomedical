@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "biomedical-assistant"
+version = "1"
+dependencies = [
+    "langchain",
+    "streamlit",
+    "openai",
+    "sentence-transformers",
+    "chromadb",
+    "beautifulsoup4"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "black",
+    "python-dotenv",
+    "beautifulsoup4",
+    "isort",
+    "ipykernel"
+]
+
+[tool.ruff]
+extend-exclude = ["**.ipynb**"]
+
+[tool.ruff.lint]
+select = [
+    "A",  # prevent using keywords that clobber python builtins
+    "B",  # bugbear: security warnings
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "ISC",  # implicit string concatenation
+    "UP",  # alert you when better syntax is available in your python version
+    "RUF",  # the ruff developer's own rules
+    "W",
+    "I"
+]
+ignore = ["ISC001"] 
